@@ -29,3 +29,29 @@ Case #4: 17
 Case #5: 7
 */
 
+function main() {
+  const data = getData();
+  const T = data[0][0];
+
+  for (let i = 0; i < T; i++) {
+    let sum = 0;
+    sum += data[i + 1][0] + data[i + 1][1];
+    console.log(`Case #${i + 1}: ${sum}`);
+  }
+}
+main();
+
+function getData() {
+  const fs = require("fs");
+  const fileData = fs.readFileSync(0).toString();
+  const arr = fileData.trim().split("\n");
+  let result = [];
+  for (let row of arr) {
+    let rowArr = row.split(" ");
+    for (let k = 0; k < rowArr.length; k++) {
+      rowArr[k] = isNaN(rowArr[k]) ? rowArr[k] : parseInt(rowArr[k]);
+    }
+    result.push(rowArr);
+  }
+  return result;
+}

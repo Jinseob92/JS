@@ -19,3 +19,12 @@ A+B+C의 값을 출력한다.
 7931
 */
 
+const fs = require("fs");
+const fileData = fs.readFileSync(0).toString().trim().split(" ");
+
+const n1 = parseInt(fileData[0]);
+const n2 = parseInt(fileData[1]);
+const n3 = parseInt(fileData[2]);
+
+const sum = n1 + n2 + n3;
+console.log(sum);

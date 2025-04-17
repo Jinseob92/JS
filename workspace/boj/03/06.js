@@ -51,3 +51,34 @@ Python을 사용하고 있다면, input 대신 sys.stdin.readline을 사용할 �
 2000
 */
 
+function main() {
+  const data = getData();
+
+  const T = data[0][0];
+  let result = "";
+
+  for (let i = 1; i <= T; i++) {
+    const A = data[i][0];
+    const B = data[i][1];
+    result += A + B + "\n";
+  }
+
+  console.log(result);
+}
+
+main();
+
+function getData() {
+  const fs = require("fs");
+  const fileData = fs.readFileSync(0).toString();
+  const arr = fileData.trim().split("\n");
+  const result = [];
+  for (let row of arr) {
+    const rowArr = row.split(" ");
+    for (let k = 0; k < rowArr.length; k++) {
+      rowArr[k] = isNaN(rowArr[k]) ? rowArr[k] : parseInt(rowArr[k]);
+    }
+    result.push(rowArr);
+  }
+  return result;
+}

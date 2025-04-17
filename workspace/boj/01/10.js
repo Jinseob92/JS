@@ -35,16 +35,16 @@
 */
 
 const fs = require("fs");
-const inputData = fs.readFileSync(0).toString().trim().split("\r\n");
-const A = parseInt(inputData[0]);
-const B = parseInt(inputData[1]);
- 
-let C = 0;
-let D = 0;
+const inputData = fs.readFileSync(0).toString().trim().split("\n");
 
-console.log(A * (B % 10));
-C = B - (B % 10); // C = 380
-console.log((A * (C % 100)) / 10); // 3776
-D = C - (C % 100); // D = 300
-console.log((A * D) / 100); // 1416
-console.log(A * ((B % 10) + (C % 100) + D)); 
+const A = parseInt(inputData[0]);
+const B = inputData[1]; // 문자열로 받아야 각 자리 분해 가능
+
+const B1 = parseInt(B[2]); // 1의 자리
+const B2 = parseInt(B[1]); // 10의 자리
+const B3 = parseInt(B[0]); // 100의 자리
+
+console.log(A * B1);
+console.log(A * B2);
+console.log(A * B3);
+console.log(A * parseInt(B));
