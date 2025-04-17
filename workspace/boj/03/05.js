@@ -48,3 +48,10 @@ long int
 long long long long long int
 */
 
+const fs = require("fs");
+const input = fs.readFileSync(0).toString().trim();
+const n = parseInt(input);
+const repeat = n / 4;
+
+let result = "long ".repeat(repeat) + "int";
+console.log(result);

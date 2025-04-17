@@ -39,3 +39,32 @@
 1
 */
 
+function main() {
+  const data = getData();
+  const T = data[0][0];
+  const V = data[2][0];
+  let count = 0;
+  for (let i = 0; i < T; i++) {
+    if (data[1][i] == V) {
+      count++;
+    }
+  }
+  console.log(count);
+}
+
+main();
+
+function getData() {
+  const fs = require("fs");
+  const fileData = fs.readFileSync(0).toString();
+  let result = [];
+  let arr = fileData.trim().split("\n");
+  for (let row of arr) {
+    rowArr = row.split(" ");
+    for (let k = 0; k < rowArr.length; k++) {
+      rowArr[k] = isNaN(rowArr[k]) ? rowArr[k] : parseInt(rowArr[k]);
+    }
+    result.push(rowArr);
+  }
+  return result;
+}

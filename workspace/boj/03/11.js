@@ -30,3 +30,31 @@
 7
 */
 
+function main() {
+  const data = getData();
+  for (let i = 0; i < data.length; i++) {
+    if (data[i][0] == 0 || data[i][1] == 0) {
+      break;
+    }
+    let sum = 0;
+    sum += data[i][0] + data[i][1];
+
+    console.log(sum);
+  }
+}
+main();
+
+function getData() {
+  const fs = require("fs");
+  const fileData = fs.readFileSync(0).toString();
+  let arr = fileData.trim().split("\n");
+  let result = [];
+  for (let row of arr) {
+    let rowArr = row.split(" ");
+    for (let k = 0; k < rowArr.length; k++) {
+      rowArr[k] = isNaN(rowArr[k]) ? rowArr[k] : parseInt(rowArr[k]);
+    }
+    result.push(rowArr);
+  }
+  return result;
+}

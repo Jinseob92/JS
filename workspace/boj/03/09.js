@@ -23,3 +23,19 @@
 *****
 */
 
+function main() {
+  const data = getData();
+  for (let i = 1; i <= data; i++) {
+    console.log("*".repeat(i));
+  }
+}
+
+main();
+
+function getData() {
+  const fs = require("fs");
+  const fileData = fs.readFileSync(0).toString().trim();
+  let result = parseInt(fileData);
+
+  return result;
+}
